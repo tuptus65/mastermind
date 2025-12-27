@@ -1,4 +1,5 @@
-name: Build and Deploy
+name: Build and Release
+
 on:
   push:
     branches:
@@ -14,20 +15,24 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 24
+          cache: 'npm'
 
       - name: Install dependencies
         run: npm install
 
-      - name: Build
+      - name: Build project
         run: npm run build
 
       - name: Prepare package.json for dist branch
         run: |
-          sed -i 's|./dist/mastermind.js|./mastermind.js|g' package.json
+          jq 'del(.devDependencies) | del(.scripts) | 
+              .main = "./mastermind.js" | 
+              .module = "./mastermind.js" | 
+              .exports["."].import = "./mastermind.js"' package.json > dist/package.json
 
       - name: Deploy to dist branch
         uses: JamesIves/github-pages-deploy-action@v4
