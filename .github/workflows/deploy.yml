@@ -29,7 +29,7 @@ jobs:
 
       - name: Prepare package.json for dist branch
         run: |
-          jq 'del(.devDependencies) | del(.scripts) | 
+          jq 'del(.devDependencies) | del(.scripts) | del(.files) |
               .main = "./mastermind.js" | 
               .module = "./mastermind.js" | 
               .exports["."].import = "./mastermind.js"' package.json > dist/package.json
