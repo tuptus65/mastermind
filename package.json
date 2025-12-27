@@ -1,0 +1,14 @@
+{
+  "name": "mastermind",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "./mastermind.js",
+  "module": "./mastermind.js",
+  "author": "Tuptus",
+  "description": "",
+  "exports": {
+    ".": {
+      "import": "./mastermind.js"
+    }
+  }
+}
