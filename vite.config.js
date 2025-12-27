@@ -7,7 +7,8 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, 'src/game.js'),
       name: 'Mastermind',
-      fileName: (format) => `mastermind.${format}.js`,
+      fileName: 'mastermind',
+      formats: ['es']
     },
     rollupOptions: {
     },

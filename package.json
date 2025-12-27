@@ -1,7 +1,17 @@
 {
-  "name": "master_mind",
+  "name": "mastermind",
   "version": "1.0.0",
+  "type": "module",
+  "files": ["dist"],
+  "main": "./dist/mastermind.js",
+  "module": "./dist/mastermind.js",
+  "author": "Tuptus",
   "description": "",
+  "exports": {
+    ".": {
+      "import": "./dist/mastermind.js"
+    }
+  },
   "devDependencies": {
     "vite": "^7.3.0"
   },
